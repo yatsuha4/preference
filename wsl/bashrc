@@ -1,0 +1,23 @@
+export PS1="\w\$ "
+export EDITOR="/mnt/c/Program Files/Emacs/emacs-28.1/bin/runemacs.exe"
+
+winpath() {
+	if [ -e $1 ]; then
+		wslpath -m $1
+	else
+		local fullpath=`realpath $1`
+		local dir=`dirname $fullpath`
+		local name=`basename $fullpath`
+		echo $(winpath $dir)/$name
+	fi
+}
+
+ed() {
+	local args=()
+	for arg in $*; do
+		args+=($(winpath $arg))
+	done
+	"$EDITOR" ${args[@]} &
+}
+
+alias ls='ls -F --ignore=*.meta'
