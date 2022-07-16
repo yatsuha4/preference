@@ -4,7 +4,9 @@
   (insert ", ")
   )
 
+;;
 ;; C#
+;;
 (defun my-csharp-mode-hook ()
   (local-set-key "," 'insert-colon-space)
   (local-set-key "\M-j" 'indent-region)
@@ -14,6 +16,17 @@
   )
 (add-hook 'csharp-mode-hook 'my-csharp-mode-hook)
 
+;;
+;; C/C++
+;;
+(defun my-c-mode-hook ()
+  ;; VisualStudioがBOM付きでないと警告を出すので
+  (prefer-coding-system 'utf-8-with-signature)
+  )
+(add-hook 'c-mode-common-hook 'my-c-mode-hook)
+
+;;
+;;
 ;;
 (global-font-lock-mode 0)
 (global-set-key "\M-g" 'goto-line)
