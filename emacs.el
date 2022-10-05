@@ -35,7 +35,7 @@
 (setq electric-indent-chars (remq ?\n electric-indent-chars))
 (setq frame-title-format "%b")
 (setq inhibit-startup-message t)
-(setq initial-frame-alist '((width . 100) (height . 50)))
+(setq initial-frame-alist '((width . 100) (height . 60)))
 (setq-default auto-save-default nil)
 (setq-default kill-whole-line t)
 (setq-default make-backup-files nil)
