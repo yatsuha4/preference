@@ -5,11 +5,21 @@
   )
 
 ;;
+;; セミコロンを無視して行ソート
+;;
+(defun sort-namespace ()
+  (interactive)
+  (sort-regexp-fields nil "^.*$" "[^;]+"
+                      (region-beginning)
+                      (region-end)))
+
+;;
 ;; C#
 ;;
 (defun my-csharp-mode-hook ()
   (local-set-key "," 'insert-colon-space)
   (local-set-key "\M-j" 'indent-region)
+  (local-set-key "\M-s" 'sort-namespace)
   (setq c-basic-offset 4)
   (setq indent-tabs-mode nil)
   (setq tab-width 4)
